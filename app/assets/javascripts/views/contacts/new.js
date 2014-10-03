@@ -3,7 +3,8 @@ App.Views.ContactsNew = Backbone.Marionette.ItemView.extend({
   template: JST['contacts/new'],
 
   events: {
-    'click .save': 'saveContact'
+    'click .save': 'saveContact',
+    'click .cancel': 'cancel'
   },
 
   saveContact: function(e) {
@@ -17,7 +18,7 @@ App.Views.ContactsNew = Backbone.Marionette.ItemView.extend({
       contacts_collection.add(contact);
       var view = new App.Views.ContactsShow( {model: contact});
       layout.mainRegion.show(view);
-      layout.messageRegion.reset();
+      layout.messageRegion.empty();
     } else {
       console.log('error');
       if (contact.validationError){
@@ -27,6 +28,14 @@ App.Views.ContactsNew = Backbone.Marionette.ItemView.extend({
         // layout.messageRegion.show();
       }
     }
+  },
+
+  cancel: function() {
+    console.log('cancel')
+    layout.messageRegion.empty();
+    // layout.mainRegion.reset();
+    layout.mainRegion.empty();
+    // view = new App.Views.ContactsEdit( {model: this.model});
   }
 
 });
