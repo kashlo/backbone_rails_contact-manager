@@ -10,17 +10,10 @@ App.Views.ContactsItem = Backbone.Marionette.ItemView.extend({
 
   initialize: function() {
     this.listenTo(contacts_collection, 'add', this.render);
-  //   console.log('initialize ContactsListItem');
     this.listenTo(this.model, 'change', this.render);
     this.listenTo(this.model, 'destroy', this.remove);
-  //   this.render();
   },
 
-  // render: function() {
-  //   console.log('render');
-  //   this.$el.append(this.template( this.model.toJSON() ));
-  //   return this;
-  // },
 
   displayContact: function(e) {
     console.log('displayContact');

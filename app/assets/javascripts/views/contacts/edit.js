@@ -2,17 +2,10 @@ App.Views.ContactsEdit = Backbone.Marionette.ItemView.extend({
 
   template: JST['contacts/edit'],
 
-  // el: '#contact',
-
   events: {
     'click .save': 'saveContact',
     'click .cancel': 'back'
   },
-
-  // render: function() {
-  //   this.$el.html(this.template( this.model.toJSON() ));
-  //   return this;
-  // },
 
   saveContact: function(e) {
     e.preventDefault();
@@ -38,18 +31,10 @@ App.Views.ContactsEdit = Backbone.Marionette.ItemView.extend({
 
   back: function() {
     console.log('back')
+    layout.messageRegion.reset();
+    layout.mainRegion.reset();
     // view = new App.Views.ContactsEdit( {model: this.model});
   }
-
-  // attributes: function() {
-  //   return {
-  //     first_name: this.$('#first_name').val(),
-  //     middle_name: this.$('#middle_name').val(),
-  //     last_name: this.$('#last_name').val(),
-  //     email: this.$('#email').val(),
-  //     phone: this.$('#phone').val()
-  //   }
-  // }
 
 
 });

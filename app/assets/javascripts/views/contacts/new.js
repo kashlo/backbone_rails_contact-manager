@@ -12,18 +12,6 @@ App.Views.ContactsNew = Backbone.Marionette.ItemView.extend({
     this.$('a .save').attr('disabled','disabled');
     var contact = new App.Models.Contact();
     var data = Backbone.Syphon.serialize(this);
-    console.log(data);
-    // contact.save(data, {
-    //   success: function() {
-    //     console.log('success');
-    //     contacts_collection.add(contact);
-    //     var view = new App.Views.ContactsShow( {model: contact});
-    //     layout.mainRegion.show(view);
-    //   },
-    //   error: function() {
-    //     console.log('error');
-    //   },
-    // });
     if (contact.save(data)){
       console.log('success');
       contacts_collection.add(contact);
