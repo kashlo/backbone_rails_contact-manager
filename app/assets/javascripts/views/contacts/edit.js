@@ -1,7 +1,6 @@
 App.Views.ContactsEdit = Backbone.Marionette.ItemView.extend({
 
   template: JST['contacts/edit'],
-  messageTemplate: JST['shared/message'],
 
   // el: '#contact',
 
