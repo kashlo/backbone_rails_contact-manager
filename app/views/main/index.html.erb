@@ -1,7 +1,7 @@
 <%= content_for :javascript do %>
   <% javascript_tag do %>
     $(document).ready(function(){
-      App.initialize();
+      ContactManager.start();
     });
   <% end %>
 <% end %>

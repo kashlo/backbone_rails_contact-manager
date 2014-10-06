@@ -1,4 +1,4 @@
-App.Views.Error = Backbone.View.extend({
+ContactManager.Views.Error = Backbone.View.extend({
 
   template: JST['shared/errors'],
 

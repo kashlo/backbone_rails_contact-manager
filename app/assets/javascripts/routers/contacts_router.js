@@ -11,7 +11,7 @@ App.Routers.Contacts = Backbone.Router.extend({
 
   listContacts: function(){
     console.log('listContacts router');
-    contacts_collection = new App.Collections.Contacts();
+    contacts_collection = new ContactManager.Entities.ContactCollection();
 
     // contacts_collection.fetch({reset: true});
     contacts_collection.fetch({ success: function() {

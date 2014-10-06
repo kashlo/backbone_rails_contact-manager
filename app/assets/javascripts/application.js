@@ -20,8 +20,9 @@
 //= require backbone.marionette
 //= require backbone_rails_contact_manager
 //= require_tree ../templates
-//= require_tree ./models
-//= require_tree ./collections
-//= require_tree ./views
-//= require_tree ./routers
-//= require_tree .
+//= require_tree ./layouts
+//= require_tree ./entities
+
+//= require_tree ./apps
+// require_tree ./routers
+// require_tree .
