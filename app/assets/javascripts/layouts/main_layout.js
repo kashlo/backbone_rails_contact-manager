@@ -25,7 +25,7 @@ ContactManager.module("Layouts", function(Layouts, ContactManager, Backbone, Mar
 
     addGroup: function() {
       console.log('addGroup');
-      ContactManager.ContactsApp.New.Controller.newGroup();
+      ContactManager.GroupsApp.New.Controller.newGroup();
       // var view = new ContactManager.Views.ContactsNew();
       // layout.mainRegion.show(view);
     }

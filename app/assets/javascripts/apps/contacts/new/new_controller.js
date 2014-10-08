@@ -1,6 +1,6 @@
 ContactManager.module("ContactsApp.New", function(New, ContactManager, Backbone, Marionette, $, _){
 
-  New.ContactsController = {
+  New.Controller = {
     newContact: function(){
       console.log("newContact called for model ")
       var contactView = new New.Contact();

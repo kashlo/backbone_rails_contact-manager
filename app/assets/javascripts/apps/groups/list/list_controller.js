@@ -1,5 +1,5 @@
-ContactManager.module("ContactsApp.List", function(List, ContactManager, Backbone, Marionette, $, _){
-  List.GroupsController = {
+ContactManager.module("GroupsApp.List", function(List, ContactManager, Backbone, Marionette, $, _){
+  List.Controller = {
     listGroups: function(){
       var groups = ContactManager.request("group:entities");
       var groupsListView = new List.Groups({ collection: groups });

@@ -1,4 +1,4 @@
-ContactManager.module("ContactsApp.List", function(List, ContactManager, Backbone, Marionette, $, _){
+ContactManager.module("GroupsApp.List", function(List, ContactManager, Backbone, Marionette, $, _){
   // ---------------------------------------- item view
   List.Group = Marionette.ItemView.extend({
     template: JST['groups/item'],

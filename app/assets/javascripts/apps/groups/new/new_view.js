@@ -1,4 +1,4 @@
-ContactManager.module("ContactsApp.New", function(New, ContactManager, Backbone, Marionette, $, _){
+ContactManager.module("GroupsApp.New", function(New, ContactManager, Backbone, Marionette, $, _){
 
   New.Group = Marionette.ItemView.extend({
 

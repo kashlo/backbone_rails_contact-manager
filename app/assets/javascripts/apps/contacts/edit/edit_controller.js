@@ -1,6 +1,6 @@
 ContactManager.module("ContactsApp.Edit", function(Edit, ContactManager, Backbone, Marionette, $, _){
 
-  Edit.ContactsController = {
+  Edit.Controller = {
     // showContact: function(model){
     //   console.log("showContact called for model ", model)
     //   var contactView = new Show.Contact({ model: model});
@@ -12,7 +12,7 @@ ContactManager.module("ContactsApp.Edit", function(Edit, ContactManager, Backbon
       var contactView = new Edit.Contact({ model: model});
 
       contactView.on("contact:show", function(model){
-        ContactManager.ContactsApp.Show.ContactsController.showContact(model);
+        ContactManager.ContactsApp.Show.Controller.showContact(model);
       });
 
       ContactManager.layout.mainRegion.show(contactView);

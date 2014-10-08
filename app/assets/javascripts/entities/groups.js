@@ -46,8 +46,4 @@ ContactManager.module("Entities", function(Entities, ContactManager, Backbone, M
   //   return API.cteateContactEntity();
   // });
 
-  ContactManager.addInitializer(function(){
-    ContactManager.ContactsApp.List.GroupsController.listGroups();
-  })
-
 });

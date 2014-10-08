@@ -1,6 +1,6 @@
-ContactManager.module("ContactsApp.New", function(New, ContactManager, Backbone, Marionette, $, _){
+ContactManager.module("GroupsApp.New", function(New, ContactManager, Backbone, Marionette, $, _){
 
-  New.GroupsController = {
+  New.Controller = {
     newGroup: function(){
       console.log("newGroup called for model ")
       var groupView = new New.Group();

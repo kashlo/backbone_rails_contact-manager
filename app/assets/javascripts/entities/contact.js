@@ -32,16 +32,10 @@ ContactManager.module("Entities", function(Entities, ContactManager, Backbone, M
 
 
   // -------------------------
-  var contacts;
-
-  var initializeContacts = function(){
-    console.log("initializeContacts");
-    // console.log(contacts);
-  };
+  var contacts = new Entities.ContactCollection();
 
   var API = {
     getContactEntities: function(){
-      var contacts = new Entities.ContactCollection();
       contacts.fetch();
       return contacts;
     // },
@@ -57,10 +51,6 @@ ContactManager.module("Entities", function(Entities, ContactManager, Backbone, M
   // ContactManager.reqres.setHandler("contact:create", function(){
   //   return API.cteateContactEntity();
   // });
-
-  ContactManager.addInitializer(function(){
-    ContactManager.ContactsApp.List.ContactsController.listContacts();
-  })
 
 
 });
