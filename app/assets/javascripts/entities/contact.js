@@ -32,15 +32,18 @@ ContactManager.module("Entities", function(Entities, ContactManager, Backbone, M
 
 
   // -------------------------
-  var contacts = new Entities.ContactCollection();
+  var contacts;
 
   var API = {
     getContactEntities: function(){
-      contacts.fetch();
+      if (contacts === undefined) {
+        contacts = new Entities.ContactCollection();
+        contacts.fetch();
+      }
       return contacts;
-    // },
-    // cteateContactEntity: function() {
-    //   return new Entities.Contact();
+    },
+    instantiateContactEntity: function() {
+      return new Entities.Contact();
     }
   };
 
@@ -48,9 +51,8 @@ ContactManager.module("Entities", function(Entities, ContactManager, Backbone, M
     return API.getContactEntities();
   });
 
-  // ContactManager.reqres.setHandler("contact:create", function(){
-  //   return API.cteateContactEntity();
-  // });
-
+  ContactManager.reqres.setHandler("contact:new", function(){
+    return API.instantiateContactEntity();
+  });
 
 });

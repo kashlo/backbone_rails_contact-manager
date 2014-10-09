@@ -8,14 +8,16 @@ ContactManager.module("ContactsApp.Show", function(Show, ContactManager, Backbon
       'click .edit': 'editContact'
     },
 
-    // initialize: function() {
-    //   this.listenTo(this.model, 'destroy', this.remove);
-    // },
+    initialize: function() {
+      this.listenTo(this.model, 'destroy', this.remove);
+    },
 
     deleteContact: function(e) {
       console.log('deleteContact');
       // console.log(this.model.toJSON());
-      this.model.destroy();
+      // this.model.destroy();
+      // ContactManager.ContactsApp.Delete.Controller.deleteContact(this.model);
+      this.trigger("contact:delete", this.model);
     },
 
     editContact: function() {

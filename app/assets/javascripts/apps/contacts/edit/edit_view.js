@@ -6,32 +6,19 @@ ContactManager.module("ContactsApp.Edit", function(Edit, ContactManager, Backbon
     tagName: 'form',
 
     events: {
-      'click .save': 'saveContact',
+      'click .save': 'updateContact',
       'click .cancel': 'cancel'
     },
 
-    saveContact: function(e) {
-      e.preventDefault();
+    updateContact: function(e) {
       console.log('saveContact');
-      var contact = this.model;
-      var data = Backbone.Syphon.serialize(this);
-      if (contact.save(data)){
-        console.log('success');
-        this.trigger("contact:show", contact);
-      } else {
-        console.log('error');
-        if (contact.validationError){
-          console.log(contact.validationError);
-          // errors = new ContactManager.Views.Error({errors: contact.validationError});
-          // layout.messageRegion.show(errors);
-          // layout.messageRegion.show();
-        }
-      }
+      e.preventDefault();
+      ContactManager.ContactsApp.Edit.Controller.updateContact(this);
     },
 
     cancel: function() {
       console.log('cancel')
-      layout.mainRegion.empty();
+      this.remove();
     }
   });
 

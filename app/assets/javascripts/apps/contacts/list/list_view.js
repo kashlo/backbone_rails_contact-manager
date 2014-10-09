@@ -8,9 +8,16 @@ ContactManager.module("ContactsApp.List", function(List, ContactManager, Backbon
     },
 
     initialize: function() {
-      this.listenTo(this.model.collection, 'add', this.render);
+      console.log('initialized contact item');
+      // this.listenTo(this.model.collection, 'add', this.render);
       this.listenTo(this.model, 'change', this.render);
       this.listenTo(this.model, 'destroy', this.remove);
+      // this.listenTo(this.model.collection, 'add', this.tt);
+    },
+
+    tt: function() {
+      console.log("tt");
+      // console.log(this.model.toJSON());
     },
 
     displayContact: function(e) {
@@ -23,8 +30,9 @@ ContactManager.module("ContactsApp.List", function(List, ContactManager, Backbon
   });
 
   // ---------------------------------------- collection view
-  List.Contacts = Marionette.CollectionView.extend({
-    tagName: "ul",
-    childView: List.Contact
+  List.Contacts = Marionette.CompositeView.extend({
+    template: JST['contacts/list'],
+    childView: List.Contact,
+    childViewContainer: "ul"
   })
 });

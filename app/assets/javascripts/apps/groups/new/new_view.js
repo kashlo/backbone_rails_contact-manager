@@ -12,24 +12,7 @@ ContactManager.module("GroupsApp.New", function(New, ContactManager, Backbone, M
     saveGroup: function(e) {
       console.log('saveGroup');
       e.preventDefault();
-      // var contact = ContactManager.request("contact:create");
-      // contacts_collection = ContactManager.request("contact:entities");
-      var data = Backbone.Syphon.serialize(this);
-      if (contact.save(data)){
-        console.log('success');
-        contacts_collection.add(contact);
-        var view = new ContactManager.Views.ContactsShow( {model: contact});
-        layout.mainRegion.show(view);
-        layout.messageRegion.empty();
-      } else {
-        console.log('error');
-        if (contact.validationError){
-          console.log(contact.validationError);
-          errors = new ContactManager.Views.Error({errors: contact.validationError});
-          layout.messageRegion.show(errors);
-          // layout.messageRegion.show();
-        }
-      }
+      ContactManager.GroupsApp.New.Controller.saveGroup(this);
     },
 
     cancel: function() {

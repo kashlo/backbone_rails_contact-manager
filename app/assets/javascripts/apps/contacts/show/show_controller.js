@@ -5,11 +5,17 @@ ContactManager.module("ContactsApp.Show", function(Show, ContactManager, Backbon
       console.log("showContact called for model ", model)
       var contactView = new Show.Contact({ model: model});
 
+      ContactManager.layout.mainRegion.show(contactView);
+
       contactView.on("contact:edit", function(model){
         ContactManager.ContactsApp.Edit.Controller.editContact(model);
       });
 
-      ContactManager.layout.mainRegion.show(contactView);
+      contactView.on("contact:delete", function(model){
+        model.collection.remove(model);
+        model.destroy();
+      });
+
     }
   }
 

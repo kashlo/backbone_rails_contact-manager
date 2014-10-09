@@ -29,12 +29,15 @@ ContactManager.module("Entities", function(Entities, ContactManager, Backbone, M
 
   var API = {
     getGroupsEntities: function(){
-      var groups = new Entities.GroupsCollection();
-      groups.fetch();
+      console.log('getGroupsEntities');
+      if (groups === undefined) {
+        var groups = new Entities.GroupsCollection();
+        groups.fetch();
+      }
       return groups;
-    // },
-    // cteateContactEntity: function() {
-    //   return new Entities.Contact();
+    },
+    instantiateGroupEntity: function() {
+      return new Entities.Group();
     }
   };
 
@@ -42,8 +45,8 @@ ContactManager.module("Entities", function(Entities, ContactManager, Backbone, M
     return API.getGroupsEntities();
   });
 
-  // ContactManager.reqres.setHandler("contact:create", function(){
-  //   return API.cteateContactEntity();
-  // });
+  ContactManager.reqres.setHandler("group:new", function(){
+    return API.instantiateGroupEntity();
+  });
 
 });
