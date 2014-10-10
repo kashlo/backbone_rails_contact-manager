@@ -12,7 +12,7 @@ ContactManager.module("GroupsApp.New", function(New, ContactManager, Backbone, M
     saveGroup: function(e) {
       console.log('saveGroup');
       e.preventDefault();
-      ContactManager.GroupsApp.New.Controller.saveGroup(this);
+      ContactManager.GroupsApp.New.Controller.save(this);
     },
 
     cancel: function() {

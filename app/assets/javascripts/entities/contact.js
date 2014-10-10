@@ -1,5 +1,7 @@
 ContactManager.module("Entities", function(Entities, ContactManager, Backbone, Marionette, $, _){
 
+  _.extend(Backbone.Model.prototype, Backbone.Validation.mixin);
+
   // ---------------------------------------- model
   Entities.Contact = Backbone.Model.extend({
     urlRoot: '/contacts',
@@ -11,16 +13,35 @@ ContactManager.module("Entities", function(Entities, ContactManager, Backbone, M
       email: ''
     },
 
-    validate: function(attrs) {
-      var errors = {};
+    // validate: function(attrs) {
+    //   var errors = {};
 
-      if (!attrs.first_name) {
-        errors.first_name = "First Name is required";
-      }
-      if( ! _.isEmpty(errors)){
-        return errors;
+    //   if (!attrs.first_name) {
+    //     errors.first_name = "First Name is required";
+    //   }
+    //   if(attrs.email && !((attrs.email).match(/@/)) ){
+    //     errors.email = "Email is not valid";
+    //   }
+    //   if( ! _.isEmpty(errors)){
+    //     return errors;
+    //   }
+    // }
+
+    validation: {
+      first_name: {
+        required: true
+      },
+      email: {
+        required: false,
+        pattern: 'email'
+      },
+      phone: {
+        required: false,
+        pattern: 'digits',
+        msg: 'Only digits allowed for phone number'
       }
     }
+
   });
 
   // ---------------------------------------- collection
@@ -36,7 +57,9 @@ ContactManager.module("Entities", function(Entities, ContactManager, Backbone, M
 
   var API = {
     getContactEntities: function(){
+      console.log('getGroupsEntities');
       if (contacts === undefined) {
+        console.log('contacts undefined');
         contacts = new Entities.ContactCollection();
         contacts.fetch();
       }

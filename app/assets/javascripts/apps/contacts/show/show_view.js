@@ -8,8 +8,13 @@ ContactManager.module("ContactsApp.Show", function(Show, ContactManager, Backbon
       'click .edit': 'editContact'
     },
 
-    initialize: function() {
+    initialize: function(options) {
       this.listenTo(this.model, 'destroy', this.remove);
+      this.group = options.group;
+    },
+
+    onShow: function(){
+      this.showGroup(this.group);
     },
 
     deleteContact: function(e) {
@@ -25,6 +30,13 @@ ContactManager.module("ContactsApp.Show", function(Show, ContactManager, Backbon
       this.trigger("contact:edit", this.model);
       // var view = new ContactManager.Views.ContactsEdit( {model: this.model});
       // layout.mainRegion.show(view);
+    },
+
+    showGroup: function(group){
+      console.log('showGroup', group);
+      if (group){
+        this.$('#group_name').html(group.get('name'));
+      }
     }
 
   });

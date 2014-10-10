@@ -27,6 +27,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'backbone-on-rails'
 gem 'marionette-rails'
+gem 'backbone-validation-rails', git: 'git://github.com/zakusha/backbone-validation-rails.git'
 gem 'twitter-bootstrap-rails'
 gem 'rabl'
 gem 'oj'

@@ -3,20 +3,22 @@ ContactManager.module("ContactsApp.New", function(New, ContactManager, Backbone,
   New.Controller = {
     newContact: function(){
       console.log("newContact called for model ")
-      var contactView = new New.Contact();
+      var groups = ContactManager.request("group:entities");
+      var contactView = new New.Contact({groups: groups});
+      // this.renderGroupList();
 
       ContactManager.layout.mainRegion.show(contactView);
     },
 
-    saveContact: function(view){
+    save: function(view){
       console.log("saveContact called for model ")
-      console.log(view);
       var contact = ContactManager.request("contact:new");
       var contacts_collection = ContactManager.request("contact:entities");
       var data = Backbone.Syphon.serialize(view);
 
       if (contact.save(data)){
         console.log('success');
+        console.log(contact);
         contacts_collection.add(contact);
         ContactManager.ContactsApp.Show.Controller.showContact(contact);
       } else {
@@ -28,7 +30,10 @@ ContactManager.module("ContactsApp.New", function(New, ContactManager, Backbone,
           // layout.messageRegion.show();
         }
       }
+    },
 
+    renderGroupList: function(){
+      console.log('renderGroupList', this);
     }
   }
 

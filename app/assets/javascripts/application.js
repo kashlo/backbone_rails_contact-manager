@@ -18,6 +18,8 @@
 //= require backbone
 //= require backbone.syphon
 //= require backbone.marionette
+//= require backbone-validation
+//= require backbone-filtered-collection
 //= require backbone_rails_contact_manager
 //= require_tree ../templates
 //= require_tree ./layouts

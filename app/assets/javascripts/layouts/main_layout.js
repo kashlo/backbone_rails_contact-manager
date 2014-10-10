@@ -13,7 +13,8 @@ ContactManager.module("Layouts", function(Layouts, ContactManager, Backbone, Mar
 
     events: {
       'click #add-contact': 'addContact',
-      'click #add-group': 'addGroup'
+      'click #add-group': 'addGroup',
+      'keypress #search': 'searchContacts',
     },
 
     addContact: function() {
@@ -28,7 +29,23 @@ ContactManager.module("Layouts", function(Layouts, ContactManager, Backbone, Mar
       ContactManager.GroupsApp.New.Controller.newGroup();
       // var view = new ContactManager.Views.ContactsNew();
       // layout.mainRegion.show(view);
+    },
+
+    searchContacts: function(e){
+      console.log('searchContacts');
+      var keyword = $('#search').val();
+      if (keyword) {
+        if ( e.which === 13 || e.type === 'click') {
+          ContactManager.ContactsApp.Search.Controller.searchContacts(keyword);
+          // if ( this.$('#group-list').val() === 'All contacts'){
+          //   this.searchAll(keyword);
+          // } else {
+          //   this.searchGroup(keyword);
+          // }
+        }
+      }
     }
+
 
   });
 

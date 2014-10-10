@@ -5,14 +5,22 @@ ContactManager.module("ContactsApp.New", function(New, ContactManager, Backbone,
     template: JST['contacts/new'],
 
     events: {
-      'click .save': 'saveContact',
+      'click .save': 'save',
       'click .cancel': 'cancel'
     },
 
-    saveContact: function(e) {
+    initialize: function(options){
+      this.groups = options.groups;
+    },
+
+    onShow: function(){
+      this.renderGroupSelect(this.groups);
+    },
+
+    save: function(e) {
       console.log('saveContact');
       e.preventDefault();
-      ContactManager.ContactsApp.New.Controller.saveContact(this);
+      ContactManager.ContactsApp.New.Controller.save(this);
 
       // var contact = ContactManager.request("contact:create");
       // contacts_collection = ContactManager.request("contact:entities");
@@ -24,6 +32,18 @@ ContactManager.module("ContactsApp.New", function(New, ContactManager, Backbone,
       // layout.mainRegion.reset();
       this.remove();
       // view = new App.Views.ContactsEdit( {model: this.model});
+    },
+
+    renderGroupSelect :function (group_collection) {
+      console.log('renderGroupSelect', group_collection);
+      console.log(this.$el);
+      console.log(this.$('select'));
+      console.log(this.$('#group_id'));
+      // var that = this
+      group_collection.each(function(item){
+        console.log(item);
+        this.$('#group_id').append("<option value='"+item.get('id')+"'>"+item.get('name')+"</option>");
+      }, this)
     }
   });
 

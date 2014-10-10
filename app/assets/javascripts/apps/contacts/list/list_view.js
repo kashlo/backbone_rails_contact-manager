@@ -4,7 +4,7 @@ ContactManager.module("ContactsApp.List", function(List, ContactManager, Backbon
     template: JST['contacts/item'],
     tagName: 'li',
     events: {
-      'click .js-contact': 'displayContact'
+      'click .js-contact': 'show'
     },
 
     initialize: function() {
@@ -15,12 +15,7 @@ ContactManager.module("ContactsApp.List", function(List, ContactManager, Backbon
       // this.listenTo(this.model.collection, 'add', this.tt);
     },
 
-    tt: function() {
-      console.log("tt");
-      // console.log(this.model.toJSON());
-    },
-
-    displayContact: function(e) {
+    show: function(e) {
       console.log('displayContact');
       e.preventDefault();
       // var view = new ContactManager.Views.ContactsShow( {model: this.model});
@@ -33,6 +28,11 @@ ContactManager.module("ContactsApp.List", function(List, ContactManager, Backbon
   List.Contacts = Marionette.CompositeView.extend({
     template: JST['contacts/list'],
     childView: List.Contact,
-    childViewContainer: "ul"
+    childViewContainer: "ul",
   })
+
+  List.Counter = Marionette.ItemView.extend({
+    template: JST['contacts/counter'],
+  })
+
 });

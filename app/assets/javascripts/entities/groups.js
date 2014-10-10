@@ -4,16 +4,23 @@ ContactManager.module("Entities", function(Entities, ContactManager, Backbone, M
   Entities.Group = Backbone.Model.extend({
     urlRoot: '/groups',
 
-    validate: function(attrs) {
-      var errors = {};
+    // validate: function(attrs) {
+    //   var errors = {};
 
-      if (!attrs.name) {
-        errors.name = "Name is required";
-      }
-      if( ! _.isEmpty(errors)){
-        return errors;
+    //   if (!attrs.name) {
+    //     errors.name = "Name is required";
+    //   }
+    //   if( ! _.isEmpty(errors)){
+    //     return errors;
+    //   }
+    // }
+
+    validation: {
+      name: {
+        required: true
       }
     }
+
   });
 
   // ---------------------------------------- collection
@@ -31,7 +38,8 @@ ContactManager.module("Entities", function(Entities, ContactManager, Backbone, M
     getGroupsEntities: function(){
       console.log('getGroupsEntities');
       if (groups === undefined) {
-        var groups = new Entities.GroupsCollection();
+        console.log('groups undefined');
+        groups = new Entities.GroupsCollection();
         groups.fetch();
       }
       return groups;

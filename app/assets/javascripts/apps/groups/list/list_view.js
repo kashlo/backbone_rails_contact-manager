@@ -9,15 +9,13 @@ ContactManager.module("GroupsApp.List", function(List, ContactManager, Backbone,
 
     initialize: function() {
       console.log('initialized group item');
-      // this.listenTo(this.collection, 'add', this.childView.render);
       this.listenTo(this.model, 'change', this.render);
       // this.listenTo(this.model, 'destroy', this.remove);
     },
 
-    zz: function() {
-      console.log("gg");
-      console.log(this.collection);
-    },
+    // render: function(){
+    //   console.log('render group item');
+    // },
 
     displayGroup: function(e) {
       console.log('displayGroup');
@@ -32,6 +30,10 @@ ContactManager.module("GroupsApp.List", function(List, ContactManager, Backbone,
   List.Groups = Marionette.CompositeView.extend({
     template: JST['groups/list'],
     childView: List.Group,
-    childViewContainer: "ul"
+    childViewContainer: "ul",
+
+    // initialize: function() {
+    //   this.listenTo(this.collection, 'add', this.render);
+    // }
   })
 });

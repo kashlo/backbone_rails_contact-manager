@@ -9,8 +9,8 @@ ContactManager.module("ContactsApp.Edit", function(Edit, ContactManager, Backbon
 
     editContact: function(model){
       console.log("editContact called for model ", model)
-      var contactView = new Edit.Contact({ model: model});
-
+      var groups = ContactManager.request("group:entities");
+      var contactView = new Edit.Contact({ model: model, groups: groups});
       ContactManager.layout.mainRegion.show(contactView);
     },
 
