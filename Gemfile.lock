@@ -1,9 +1,3 @@
-GIT
-  remote: git://github.com/zakusha/backbone-validation-rails.git
-  revision: aa05365fa5394f1516e86b72276cb4e213197988
-  specs:
-    backbone-validation-rails (0.8.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -47,6 +41,7 @@ GEM
       ejs
       jquery-rails
       railties
+    backbone-validation-rails (0.7.1.1)
     builder (3.2.2)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -146,7 +141,7 @@ PLATFORMS
 
 DEPENDENCIES
   backbone-on-rails
-  backbone-validation-rails!
+  backbone-validation-rails
   jbuilder (~> 2.0)
   jquery-rails
   marionette-rails
