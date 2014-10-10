@@ -9,13 +9,14 @@
 # And be sure to use new-style password hashing:
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 #
+
 default: &default
   adapter: postgresql
   encoding: utf8
   pool: 5
-  username: root
+  username: postgres
   password:
-  socket: /tmp/mysql.sock
+  # socket: /tmp/mysql.sock
 
 development:
   <<: *default
@@ -50,5 +51,5 @@ test:
 production:
   <<: *default
   database: backbone_rails_contact-manager_production
-  username: backbone_rails_contact-manager
+  username: postgres
   password: <%= ENV['BACKBONE_RAILS_CONTACT-MANAGER_DATABASE_PASSWORD'] %>
