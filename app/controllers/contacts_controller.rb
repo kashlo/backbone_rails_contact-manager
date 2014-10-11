@@ -12,8 +12,6 @@ class ContactsController < ApplicationController
   # end
 
   def update
-    puts "_________update"
-    puts contact_params
     @contact = Contact.find(params[:id])
     @contact.update_attributes(contact_params)
     respond_with @contact
@@ -29,6 +27,12 @@ class ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
     @contact.destroy
     respond_with @contact
+  end
+
+  def search
+    puts "search"
+    @contacts = Contact.where("first_name like ?", "%#{params[:keyword]}%")
+    respond_with @contacts
   end
 
   private

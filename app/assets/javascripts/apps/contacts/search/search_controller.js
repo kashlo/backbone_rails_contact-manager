@@ -1,25 +1,25 @@
 ContactManager.module("ContactsApp.Search", function(Search, ContactManager, Backbone, Marionette, $, _){
 
   Search.Controller = {
+
     searchContacts: function(keyword){
-      var contacts = ContactManager.request("contact:entities");
-      var filtered = new FilteredCollection(contacts);
-      var results = filtered.filterBy( {first_name: keyword} );
-      // var results = contacts.where({first_name: keyword});
-      this.displaySearchResults(results);
+      var that = this;
+      var signForm = $.ajax({
+        type: "GET",
+        url: "/contacts/search?keyword=" + keyword,
+        dataType: "JSON"
+      }).done(function(response){
+        that.displaySearchResults(response);
+      }).fail(function(){
+        console.log('error');
+      });
     },
 
     displaySearchResults: function(results){
-      console.log(results);
-      var contactsListView = new Search.Results({collection: results});
+      var results_collection = ContactManager.request("contact:entities:new", results);
+      var contactsListView = new Search.Results({collection: results_collection});
       ContactManager.layout.mainRegion.show(contactsListView);
     }
   }
 
 });
-
-var superset = new Backbone.Collection(/* ... */);
-var filtered = new FilteredCollection(superset);
-
-// Filtered will contain only models where model.get('foo') === "bar"
-filtered.filterBy({ foo: "bar" });

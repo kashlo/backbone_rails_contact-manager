@@ -67,6 +67,9 @@ ContactManager.module("Entities", function(Entities, ContactManager, Backbone, M
     },
     instantiateContactEntity: function() {
       return new Entities.Contact();
+    },
+    instantiateContactCollectionEntity: function(objects) {
+      return new Entities.ContactCollection(objects);
     }
   };
 
@@ -77,5 +80,7 @@ ContactManager.module("Entities", function(Entities, ContactManager, Backbone, M
   ContactManager.reqres.setHandler("contact:new", function(){
     return API.instantiateContactEntity();
   });
-
+  ContactManager.reqres.setHandler("contact:entities:new", function(objects){
+    return API.instantiateContactCollectionEntity(objects);
+  });
 });
