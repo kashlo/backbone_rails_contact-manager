@@ -24,7 +24,10 @@ ContactManager.module("ContactsApp.Search", function(Search, ContactManager, Bac
   Search.Results = Marionette.CollectionView.extend({
     // template: JST['contacts/list'],
     childView: Search.Result,
-    emptyView: Search.NoResultsView
+    emptyView: Search.NoResultsView,
     // childViewContainer: "ul",
+    onShow: function(){
+      console.log('zzzzzzzz');
+    },
   })
 });

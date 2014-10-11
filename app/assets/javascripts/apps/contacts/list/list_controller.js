@@ -19,7 +19,10 @@ ContactManager.module("ContactsApp.List", function(List, ContactManager, Backbon
     },
 
     showCounter: function(count){
-      view = new List.Counter
+      console.log('showCounter');
+      var contacts = ContactManager.request("contact:entities");
+      view = new List.Counter({collection: contacts});
+      view.render();
     }
   }
 

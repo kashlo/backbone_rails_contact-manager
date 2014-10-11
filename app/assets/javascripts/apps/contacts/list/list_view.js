@@ -29,10 +29,19 @@ ContactManager.module("ContactsApp.List", function(List, ContactManager, Backbon
     template: JST['contacts/list'],
     childView: List.Contact,
     childViewContainer: "ul",
+
+    onShow: function(){
+      ContactManager.ContactsApp.List.Controller.showCounter();
+    }
   })
 
   List.Counter = Marionette.ItemView.extend({
-    template: JST['contacts/counter'],
+    template: JST['shared/counter'],
+    el: '#contacts-count',
+
+    collectionEvents: {
+      'sync add remove': 'render',
+    }
   })
 
 });

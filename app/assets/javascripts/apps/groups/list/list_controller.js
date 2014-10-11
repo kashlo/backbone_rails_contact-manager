@@ -15,6 +15,13 @@ ContactManager.module("GroupsApp.List", function(List, ContactManager, Backbone,
       groupsListView.on("childview:group:show", function(childView, model){
         ContactManager.GroupsApp.Show.Controller.show(model);
       });
+    },
+
+    showCounter: function(count){
+      console.log('showCounter');
+      var groups = ContactManager.request("group:entities");
+      view = new List.Counter({collection: groups});
+      view.render();
     }
   }
 

@@ -32,8 +32,20 @@ ContactManager.module("GroupsApp.List", function(List, ContactManager, Backbone,
     childView: List.Group,
     childViewContainer: "ul",
 
+    onShow: function(){
+      ContactManager.GroupsApp.List.Controller.showCounter();
+    }
     // initialize: function() {
     //   this.listenTo(this.collection, 'add', this.render);
     // }
+  })
+
+  List.Counter = Marionette.ItemView.extend({
+    template: JST['shared/counter'],
+    el: '#groups-count',
+
+    collectionEvents: {
+      'sync add remove': 'render',
+    }
   })
 });
